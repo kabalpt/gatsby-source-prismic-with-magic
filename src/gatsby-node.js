@@ -1,7 +1,6 @@
 import createPagesFromDocuments from './createPagesFromDocuments';
 import fetchData from './fetch';
 import getLayouts from './getLayouts';
-import keysToCamel from './helpers/keysToCamel';
 
 export const createPages = async (
   { actions: { createPage } },
@@ -16,12 +15,10 @@ export const createPages = async (
     repositoryName
   }
 ) => {
-  const { documents: documentsFromSource } = await fetchData({
+  const { documents } = await fetchData({
     accessToken,
     repositoryName
   });
-
-  const documents = keysToCamel(documentsFromSource);
 
   const { layoutNames, layouts } = await getLayouts({ layoutNameExceptions, layoutsKey, layoutsPath });
 

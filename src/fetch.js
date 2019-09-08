@@ -1,4 +1,5 @@
 import Prismic from 'prismic-javascript';
+import keysToCamel from './helpers/keysToCamel';
 
 const getDocuments = async ({ client, lang, mergedResponse = [], page = 1, pageSize = 100 }) => {
   const { results, total_results_size: totalResults } = await client.query([], { lang, page, pageSize });
@@ -9,7 +10,7 @@ const getDocuments = async ({ client, lang, mergedResponse = [], page = 1, pageS
     return getDocuments({ client, lang, mergedResponse, page: page + 1, pageSize });
   }
 
-  return mergedResponse;
+  return keysToCamel(mergedResponse);
 };
 
 export default async ({ repositoryName, accessToken, lang = '*' }) => {
