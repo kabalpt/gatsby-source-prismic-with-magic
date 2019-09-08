@@ -6,7 +6,7 @@ Source plugin for getting data from prismic and create magic stuff
 
 The idea behind this plugin was to create a boilerplate tool to automatically create pages with data pre-fetched from Prismic on gatsby build time.
 
-**This Plugin do not overide the need of `gatsby-source-plugin` if you still want to use graphql to populate regular pages or components!**
+**This Plugin do not overide the need of `gatsby-source-plugin` or similar if you still want to use graphql to populate regular pages or components!**
 
 ## How it works
 
@@ -176,7 +176,7 @@ Your Prismic repository name.
 
 ## Extra stuff
 
-To complement this plugin I've created a set of tools for `React` + `Prismic` like a `Preview` high order component a `PrismicRender` service and a `PrismicSerializer`:
+To complement this plugin I've created a set of tools for `React` + `Prismic` like a `Preview` high order component and a couple of simple render components.
 
 Feel free to use:
 [prismic-react-tools](https://github.com/kabalpt/prismic-react-tools)
