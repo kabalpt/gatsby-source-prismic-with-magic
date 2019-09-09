@@ -22,7 +22,7 @@ const createPagesFromDocuments = ({
     results.forEach(document => {
       const { id, lang, uid } = document;
       const locale = get(langs, `.${lang}`);
-      const path = `${locale && !locale.default ? locale.path : ''}/${uid || id}`;
+      let path = `${locale && !locale.default ? locale.path : ''}/${uid || id}`;
 
       if (typeof onCreatePageDefault === 'function') {
         context = { ...context, ...onCreatePageDefault({ document, documents, ...context }) };
@@ -33,6 +33,11 @@ const createPagesFromDocuments = ({
       }
 
       context = { document, ...context };
+
+      if (!context.path) {
+        path = { context };
+        delete context.path;
+      }
 
       createPage({
         component,
