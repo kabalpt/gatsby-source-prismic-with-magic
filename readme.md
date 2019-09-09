@@ -2,6 +2,11 @@
 
 Source plugin for getting data from prismic and create magic stuff
 
+## install
+```sh
+yarn add gatsby-source-prismic-with-magic
+```
+
 ## Why I've created this
 
 The idea behind this plugin was to create a boilerplate tool to automatically create pages with data pre-fetched from Prismic on gatsby build time.
