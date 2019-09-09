@@ -50,11 +50,19 @@ var getLayouts = function () {
             return (0, _fs.readdirSync)(layoutsPath).filter(function (file) {
               return (0, _fs.statSync)(_path2.default.join(layoutsPath, file)).isDirectory();
             }).reduce(function (result, name) {
+              var onCreatePage = void 0;
+
+              try {
+                onCreatePage = require(_path2.default.resolve(_path2.default.join(layoutsPath, name, 'onCreatePage.js')));
+              } catch (error) {
+                onCreatePage = undefined;
+              }
+
               return (0, _extends4.default)({}, result, (0, _defineProperty3.default)({}, '' + layoutsKey + (0, _componentCaseToPrismicCase2.default)(name, {
                 exceptions: layoutNameExceptions
               }), {
                 component: _path2.default.resolve(_path2.default.join(layoutsPath, name, name + '.js')),
-                onCreatePage: require(_path2.default.resolve(_path2.default.join(layoutsPath, name, 'onCreatePage.js')))
+                onCreatePage: onCreatePage
               }));
             }, {});
 
