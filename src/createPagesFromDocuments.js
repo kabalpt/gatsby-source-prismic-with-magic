@@ -34,7 +34,7 @@ const createPagesFromDocuments = ({
 
       context = { document, ...context };
 
-      if (!context.path) {
+      if (context.path) {
         path = { context };
         delete context.path;
       }
