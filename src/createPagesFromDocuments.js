@@ -34,9 +34,13 @@ const createPagesFromDocuments = ({
 
       context = { document, ...context };
 
+      console.log(context);
+
       if (context.path) {
-        path = { context };
+        const { path: changedPath } = context;
+
         delete context.path;
+        path = changedPath;
       }
 
       createPage({

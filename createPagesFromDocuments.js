@@ -54,9 +54,15 @@ var createPagesFromDocuments = function createPagesFromDocuments(_ref) {
 
       context = (0, _extends3.default)({ document: document }, context);
 
+      console.log(context);
+
       if (context.path) {
-        path = { context: context };
+        var _context = context,
+            changedPath = _context.path;
+
+
         delete context.path;
+        path = changedPath;
       }
 
       createPage({
