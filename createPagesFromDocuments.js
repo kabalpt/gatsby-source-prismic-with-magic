@@ -21,7 +21,7 @@ var createPagesFromDocuments = function createPagesFromDocuments(_ref) {
       onCreatePageDefault = _ref.onCreatePage,
       onCreatePages = _ref.onCreatePages;
 
-  var context = typeof onCreatePages === 'function' ? onCreatePages({ documents: documents }) || {} : {};
+  var globalContext = typeof onCreatePages === 'function' ? onCreatePages({ documents: documents }) || {} : {};
 
   layoutNames.map(function (type) {
     var results = documents.filter(function (document) {
@@ -43,6 +43,7 @@ var createPagesFromDocuments = function createPagesFromDocuments(_ref) {
 
       var locale = (0, _lodash.get)(langs, '.' + lang);
       var path = (locale && !locale.default ? locale.path : '') + '/' + (uid || id);
+      var context = globalContext;
 
       if (typeof onCreatePageDefault === 'function') {
         context = (0, _extends3.default)({}, context, onCreatePageDefault((0, _extends3.default)({ document: document, documents: documents }, context)));

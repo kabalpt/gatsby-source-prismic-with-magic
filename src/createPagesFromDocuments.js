@@ -9,7 +9,7 @@ const createPagesFromDocuments = ({
   onCreatePage: onCreatePageDefault,
   onCreatePages
 }) => {
-  let context = typeof onCreatePages === 'function' ? onCreatePages({ documents }) || {} : {};
+  const globalContext = typeof onCreatePages === 'function' ? onCreatePages({ documents }) || {} : {};
 
   layoutNames.map(type => {
     const results = documents.filter(document => document.type === type);
@@ -23,6 +23,7 @@ const createPagesFromDocuments = ({
       const { id, lang, uid } = document;
       const locale = get(langs, `.${lang}`);
       let path = `${locale && !locale.default ? locale.path : ''}/${uid || id}`;
+      let context = globalContext;
 
       if (typeof onCreatePageDefault === 'function') {
         context = { ...context, ...onCreatePageDefault({ document, documents, ...context }) };
