@@ -46,11 +46,11 @@ var createPagesFromDocuments = function createPagesFromDocuments(_ref) {
       var context = globalContext;
 
       if (typeof onCreatePageDefault === 'function') {
-        context = (0, _extends3.default)({}, context, onCreatePageDefault((0, _extends3.default)({ document: document, documents: documents }, context)));
+        context = onCreatePageDefault((0, _extends3.default)({ document: document, documents: documents }, context)) || context;
       }
 
       if (typeof onCreatePage === 'function') {
-        context = (0, _extends3.default)({}, context, onCreatePage((0, _extends3.default)({ document: document, documents: documents }, context)));
+        context = onCreatePage((0, _extends3.default)({ document: document, documents: documents }, context)) || context;
       }
 
       context = (0, _extends3.default)({ document: document }, context);
