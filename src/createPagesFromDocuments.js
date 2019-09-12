@@ -26,11 +26,11 @@ const createPagesFromDocuments = ({
       let context = globalContext;
 
       if (typeof onCreatePageDefault === 'function') {
-        context = { ...context, ...onCreatePageDefault({ document, documents, ...context }) };
+        context = onCreatePageDefault({ document, documents, ...context }) || context;
       }
 
       if (typeof onCreatePage === 'function') {
-        context = { ...context, ...onCreatePage({ document, documents, ...context }) };
+        context = onCreatePage({ document, documents, ...context }) || context;
       }
 
       context = { document, ...context };
