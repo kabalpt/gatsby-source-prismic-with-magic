@@ -7,9 +7,9 @@ const componentCaseToPrismicCase = (componentCase, { exceptions }) => {
     });
   }
 
-  parsedString = parsedString.replace(/([A-Z])/g, firstWord => `-${firstWord[0].toLowerCase()}`);
+  parsedString = parsedString.replace(/([A-Z])/g, firstWord => `_${firstWord[0].toLowerCase()}`);
 
-  if (parsedString[0] === '-') {
+  if (parsedString[0] === '_') {
     parsedString = parsedString.substr(1);
   }
 

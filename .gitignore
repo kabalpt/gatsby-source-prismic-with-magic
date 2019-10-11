@@ -4,3 +4,4 @@
 /normalize.js
 node_modules
 .npmrc
+.DS_STORE

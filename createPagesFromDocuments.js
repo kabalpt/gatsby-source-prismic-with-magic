@@ -8,6 +8,10 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
+
+var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
+
 var _lodash = require('lodash');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -18,6 +22,7 @@ var createPagesFromDocuments = function createPagesFromDocuments(_ref) {
       langs = _ref.langs,
       layoutNames = _ref.layoutNames,
       layouts = _ref.layouts,
+      layoutsKey = _ref.layoutsKey,
       onCreatePageDefault = _ref.onCreatePage,
       onCreatePages = _ref.onCreatePages;
 
@@ -25,7 +30,11 @@ var createPagesFromDocuments = function createPagesFromDocuments(_ref) {
 
   layoutNames.map(function (type) {
     var results = documents.filter(function (document) {
-      return document.type === type;
+      var _document$type$split = document.type.split(layoutsKey),
+          _document$type$split2 = (0, _slicedToArray3.default)(_document$type$split, 2),
+          documentSlug = _document$type$split2[1];
+
+      return documentSlug.replace('-', '_') === type;
     });
     var _layouts$type = layouts[type],
         component = _layouts$type.component,

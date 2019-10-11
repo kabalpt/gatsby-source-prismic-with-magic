@@ -22,10 +22,10 @@ var componentCaseToPrismicCase = function componentCaseToPrismicCase(componentCa
   }
 
   parsedString = parsedString.replace(/([A-Z])/g, function (firstWord) {
-    return '-' + firstWord[0].toLowerCase();
+    return '_' + firstWord[0].toLowerCase();
   });
 
-  if (parsedString[0] === '-') {
+  if (parsedString[0] === '_') {
     parsedString = parsedString.substr(1);
   }
 

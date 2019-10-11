@@ -2,7 +2,7 @@ import { readdirSync, statSync } from 'fs';
 import componentCaseToPrismicCase from './helpers/componentCaseToPrismicCase';
 import path from 'path';
 
-const getLayouts = async ({ layoutNameExceptions, layoutsKey, layoutsPath }) => {
+const getLayouts = async ({ layoutNameExceptions, layoutsPath }) => {
   const layouts = await readdirSync(layoutsPath)
     .filter(file => statSync(path.join(layoutsPath, file)).isDirectory())
     .reduce((result, name) => {
@@ -16,7 +16,7 @@ const getLayouts = async ({ layoutNameExceptions, layoutsKey, layoutsPath }) => 
 
       return {
         ...result,
-        [`${layoutsKey}${componentCaseToPrismicCase(name, {
+        [`${componentCaseToPrismicCase(name, {
           exceptions: layoutNameExceptions
         })}`]: {
           component: path.resolve(path.join(layoutsPath, name, `${name}.js`)),
