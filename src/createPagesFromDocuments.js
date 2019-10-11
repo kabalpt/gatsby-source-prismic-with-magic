@@ -6,13 +6,18 @@ const createPagesFromDocuments = ({
   langs,
   layoutNames,
   layouts,
+  layoutsKey,
   onCreatePage: onCreatePageDefault,
   onCreatePages
 }) => {
   const globalContext = typeof onCreatePages === 'function' ? onCreatePages({ documents }) || {} : {};
 
   layoutNames.map(type => {
-    const results = documents.filter(document => document.type === type);
+    const results = documents.filter(document => {
+      const [, documentSlug] = document.type.split(layoutsKey);
+
+      return documentSlug.replace('-', '_') === type;
+    });
     const { component, onCreatePage } = layouts[type];
 
     if (!results || !component) {

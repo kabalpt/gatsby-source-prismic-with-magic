@@ -20,9 +20,18 @@ export const createPages = async (
     repositoryName
   });
 
-  const { layoutNames, layouts } = await getLayouts({ layoutNameExceptions, layoutsKey, layoutsPath });
+  const { layoutNames, layouts } = await getLayouts({ layoutNameExceptions, layoutsPath });
 
-  createPagesFromDocuments({ createPage, documents, langs, layoutNames, layouts, onCreatePage, onCreatePages });
+  createPagesFromDocuments({
+    createPage,
+    documents,
+    langs,
+    layoutNames,
+    layouts,
+    layoutsKey,
+    onCreatePage,
+    onCreatePages
+  });
 
   return;
 };

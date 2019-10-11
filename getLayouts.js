@@ -39,7 +39,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var getLayouts = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(_ref2) {
     var layoutNameExceptions = _ref2.layoutNameExceptions,
-        layoutsKey = _ref2.layoutsKey,
         layoutsPath = _ref2.layoutsPath;
     var layouts, layoutNames;
     return _regenerator2.default.wrap(function _callee$(_context) {
@@ -58,7 +57,7 @@ var getLayouts = function () {
                 onCreatePage = undefined;
               }
 
-              return (0, _extends4.default)({}, result, (0, _defineProperty3.default)({}, '' + layoutsKey + (0, _componentCaseToPrismicCase2.default)(name, {
+              return (0, _extends4.default)({}, result, (0, _defineProperty3.default)({}, '' + (0, _componentCaseToPrismicCase2.default)(name, {
                 exceptions: layoutNameExceptions
               }), {
                 component: _path2.default.resolve(_path2.default.join(layoutsPath, name, name + '.js')),
