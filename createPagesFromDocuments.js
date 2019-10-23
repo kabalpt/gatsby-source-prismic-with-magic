@@ -32,7 +32,8 @@ var createPagesFromDocuments = function createPagesFromDocuments(_ref) {
     var results = documents.filter(function (document) {
       var _document$type$split = document.type.split(layoutsKey),
           _document$type$split2 = (0, _slicedToArray3.default)(_document$type$split, 2),
-          documentSlug = _document$type$split2[1];
+          _document$type$split3 = _document$type$split2[1],
+          documentSlug = _document$type$split3 === undefined ? '' : _document$type$split3;
 
       return documentSlug.replace('-', '_') === type;
     });

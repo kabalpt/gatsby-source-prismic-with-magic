@@ -14,7 +14,7 @@ const createPagesFromDocuments = ({
 
   layoutNames.map(type => {
     const results = documents.filter(document => {
-      const [, documentSlug] = document.type.split(layoutsKey);
+      const [, documentSlug = ''] = document.type.split(layoutsKey);
 
       return documentSlug.replace('-', '_') === type;
     });
